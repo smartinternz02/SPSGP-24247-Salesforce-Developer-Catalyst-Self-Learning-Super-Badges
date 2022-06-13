@@ -1,0 +1,8 @@
+trigger AccountAddressTrigger on Account (before insert, before update) {
+    For(Account accountAddress: Trigger.new){
+        if(accountAddress.BillingPostalCode !=null && accountAddress.Match_Billing_Address__c ==true){
+            accountAddress.ShippingPostalCode=accountAddress.BillingPostalCode;
+        }
+    }
+
+}
